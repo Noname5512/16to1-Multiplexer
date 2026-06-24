@@ -1,0 +1,54 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_00000140fc0a96e0 .scope module, "muxtest" "muxtest" 2 12;
+ .timescale 0 0;
+v00000140fc0f5770_0 .var "inputs", 15 0;
+v00000140fc0f5810_0 .net "out", 0 0, L_00000140fc0f5950;  1 drivers
+v00000140fc0f58b0_0 .var "sel", 3 0;
+S_00000140fc0a9870 .scope module, "mux1" "mux16to1" 2 16, 2 1 0, S_00000140fc0a96e0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 16 "in";
+    .port_info 1 /INPUT 4 "sel";
+    .port_info 2 /OUTPUT 1 "out";
+v00000140fc0f5630_0 .net "in", 15 0, v00000140fc0f5770_0;  1 drivers
+v00000140fc0c2c30_0 .net "out", 0 0, L_00000140fc0f5950;  alias, 1 drivers
+v00000140fc0f56d0_0 .net "sel", 3 0, v00000140fc0f58b0_0;  1 drivers
+L_00000140fc0f5950 .part/v v00000140fc0f5770_0, v00000140fc0f58b0_0, 1;
+    .scope S_00000140fc0a96e0;
+T_0 ;
+    %vpi_call 2 20 "$dumpfile", "mux16to1.vcd" {0 0 0};
+    %vpi_call 2 21 "$dumpvars", 32'sb00000000000000000000000000000000, S_00000140fc0a96e0 {0 0 0};
+    %vpi_call 2 22 "$monitor", "%0t inputs=%h,sel=%h,out=%b", $time, v00000140fc0f5770_0, v00000140fc0f58b0_0, v00000140fc0f5810_0 {0 0 0};
+    %delay 5, 0;
+    %pushi/vec4 16138, 0, 16;
+    %store/vec4 v00000140fc0f5770_0, 0, 16;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v00000140fc0f58b0_0, 0, 4;
+    %delay 5, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v00000140fc0f58b0_0, 0, 4;
+    %delay 5, 0;
+    %pushi/vec4 6, 0, 4;
+    %store/vec4 v00000140fc0f58b0_0, 0, 4;
+    %delay 5, 0;
+    %pushi/vec4 2, 0, 4;
+    %store/vec4 v00000140fc0f58b0_0, 0, 4;
+    %delay 5, 0;
+    %pushi/vec4 12, 0, 4;
+    %store/vec4 v00000140fc0f58b0_0, 0, 4;
+    %delay 5, 0;
+    %vpi_call 2 28 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "mux16to1.v";
